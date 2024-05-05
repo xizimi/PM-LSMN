@@ -11,20 +11,15 @@ from model.remove_model import PM_LSMN
 from utils.loss import sam_loss, calculate_ergas
 from utils.metrics import SSIM
 def calculate_psnr(tensor1, tensor2):
-    # 将输入张量转换为浮点数张量
     tensor1 = tensor1.float()
     tensor2 = tensor2.float()
-    # 计算 MSE
     mse_val = torch.mean((tensor1 - tensor2) ** 2)
-
-    # 计算 PSNR
     psnr_val = 10 * torch.log10(1 / mse_val)
     return psnr_val.item()
 
 if __name__ == "__main__":
     """ 准备数据 """
-    val_dataset = Dataset("data/val1.txt", image_height=512, image_weight=512, image_aug=False)
-    # val_dataset = Dataset("data/val1.txt", image_height=512, image_weight=512, image_aug=False)
+    val_dataset = Dataset("val1.txt", image_height=512, image_weight=512, image_aug=False)
     val_loader = DataLoader(val_dataset, batch_size=1, shuffle=True)  # , pin_memory=True
     """ 模型载入 """
     device = "cuda" if torch.cuda.is_available() else "cpu"
