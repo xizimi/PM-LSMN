@@ -23,8 +23,8 @@ if __name__ == "__main__":
     size=512
     batchsize=4
     lr=0.00001
-    train_dataset = Dataset("data/train1.txt", image_height=size, image_weight=size, image_aug=False)
-    val_dataset = Dataset("data/val1.txt", image_height=size, image_weight=size, image_aug=False)
+    train_dataset = Dataset("train1.txt", image_height=size, image_weight=size, image_aug=False)
+    val_dataset = Dataset("val1.txt", image_height=size, image_weight=size, image_aug=False)
 
     train_loader = DataLoader(train_dataset, batch_size=batchsize, shuffle=True)  # , pin_memory=True
     val_loader = DataLoader(val_dataset, batch_size=batchsize,shuffle=True)  # , pin_memory=True
